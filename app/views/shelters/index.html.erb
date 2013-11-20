@@ -1,0 +1,30 @@
+<div class="container">
+
+<h1>Overnight Shelters in Chicago</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total beds</th>
+      <th>Open beds</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @shelters.each do |shelter| %>
+    <tr>
+      <td><%= link_to shelter.name, shelter_url(shelter) %></td>
+      <td><%= shelter.total_beds %></td>
+      <td><%= shelter.open_beds %></td>
+
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<p><%= link_to 'Add a New Shelter', new_shelter_url, :class => "btn btn-primary" %></p>
+
+</div>

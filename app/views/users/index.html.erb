@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Do you work at a Chicago based shelter and provide overnight sleeping arrangements for the homeless?</h3>
+        <p>If so, this app is a way to inform the homeless and social workers working with the homeless about which shelters have open beds on a daily, hourly, and minute basis. This will help prevent shelters being overcrowded while others aren't full. It will also help social workers and 311 direct the homeless to shelters that have open beds where they can get a good nights sleep.</p>
+
+      <p>In order for this application to work as seamlessly as possible, we allow one sign in per shelter. Please look to the right to see shelters that are already registered.</p>
+
+       <p class="register_your_shelter_button"><%= link_to 'Register Your Shelter Today', new_shelter_url, :class => "btn btn-primary" %>
+        </p>
+
+    </div>
+    <div class="col-md-4">
+      <br>
+      <%= link_to "Login to your Shelter's Page", nil, :class => "btn btn-primary" %>
+      <h3 class"registered_shelters">Registered Shelters</h3>
+
+      <h6><% @shelters.each do |shelter| -%></h6>
+        <%= shelter.name %> <br>
+      <% end -%>
+    </div>
+  </div>
+</div>
+

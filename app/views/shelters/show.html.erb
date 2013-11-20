@@ -1,0 +1,86 @@
+<span class="login_link">Already Registered? <%= link_to "Login Here", new_session_url%> | <%= link_to "Homepage", root_url %> | <%= link_to "Shelters Page", root_url %></span>
+
+<div class="container">
+
+<h1><%= @shelter.name %> Page</h1>
+
+
+  <div class="row">
+    <div class="col-md-8">
+      <table>
+        <thead>
+          <tr>
+            <th>Total beds</th>
+            <th>Open beds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td><%= @shelter.total_beds %></td>
+          <td><%= @shelter.open_beds %></td>
+        </tbody>
+      </table>
+
+  <br>
+
+<!-- Progress Bar that would show the occupancy percentage at a time -->
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+          <span class="sr-only">Open Beds</span>
+        </div>
+      </div>
+        <br>
+
+<!-- Register a bed - only shelter owners should see this -->
+  <h3>Register a guest (bed occupant)</h3>
+
+
+
+    </div>
+
+
+<!-- Shelter information/details -->
+
+    <div class="col-md-4">
+      <p>
+        <b>Street address:</b>
+        <%= @shelter.street_address %>
+      </p>
+
+      <p>
+        <b>City:</b>
+        <%= @shelter.city %>
+      </p>
+
+      <p>
+        <b>State:</b>
+        <%= @shelter.state %>
+      </p>
+
+      <p>
+        <b>Zip:</b>
+        <%= @shelter.zip %>
+      </p>
+
+      <p>
+        <b>Phone number:</b>
+        <%= @shelter.phone_number %>
+      </p>
+
+      <p>
+        <b>Total beds:</b>
+        <%= @shelter.total_beds %>
+      </p>
+
+      <p>
+        <b>Open beds:</b>
+        <%= @shelter.open_beds %>
+      </p>
+
+      <%= link_to "Update Shelter Info", edit_shelter_url(@shelter.id) %>
+      <br>
+      <%= link_to 'Delete Shelter', shelter_url(@shelter.id), method: 'delete', data: { confirm: "Do you really want to delete this shelter? You will not be able to retrieve it." } %>
+
+    </div>
+
+  </div>
+</div>

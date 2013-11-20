@@ -1,0 +1,107 @@
+<span class="login_link">Already Registered? <%= link_to "Login Here", new_session_url%> | <%= link_to "Homepage", root_url %> | <%= link_to "Shelters Page", root_url %></span>
+
+<div class="container">
+
+  <h1>Registration Page</h1>
+
+  <div class="col-md-6">
+  <%= form_tag(shelters_url, method: 'post') do %>
+
+    <h2>Shelter Details</h2>
+
+      <form role="form">
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :name %><br />
+          <%= text_field_tag :name, nil, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :street_address %><br />
+          <%= text_field_tag :street_address, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :city %><br />
+          <%= text_field_tag :city, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :state %><br />
+          <%= text_field_tag :state, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :zip %><br />
+          <%= number_field_tag :zip, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :phone_number %><br />
+          <%= text_field_tag :phone_number, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :total_beds %><br />
+          <%= number_field_tag :total_beds, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="col-md-6">
+    <h2>Login Details</h2>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :email %><br />
+          <%= email_field_tag :email, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :username %><br />
+          <%= text_field_tag :username, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :password, "Password" %><br />
+          <%= password_field_tag :password, nil, :class => "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <%= label_tag :password_confirmation, "Password Confirmation" %><br />
+          <%= password_field_tag :password_confirmations, nil, :class => "form-control"  %>
+        </div>
+        </div
+
+      <br>
+
+      <div>
+        <%= submit_tag "Register Shelter & Login Information", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>
+
+

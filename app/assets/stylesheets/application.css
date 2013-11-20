@@ -1,0 +1,46 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+/*Homepage Styling*/
+
+.login_link {
+  text-align: right;
+}
+
+.homepage {
+  text-align: center;
+  padding-top: 200px;
+  }
+
+.homepage h1 {
+  font-size: 75px;
+  text-decoration: none;
+  }
+
+.homepage a:hover {
+  color:#083584;
+  text-decoration: none}
+
+.homepage_text {
+  font-size: 15px;
+  text-align: center;
+  }
+
+.col-md-4 {
+  text-align: right
+}
+
+.register_your_shelter_button {
+  text-align: center;
+}
