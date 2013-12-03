@@ -1,15 +1,13 @@
-<span class="login_link">Already Registered? <%= link_to "Login Here", new_session_url%> | <%= link_to "Homepage", root_url %> | <%= link_to "Shelters Page", root_url %></span>
-
 <div class="container">
 
   <h1>Registration Page</h1>
+  <h2><%= notice %></h2>
+
 
   <div class="col-md-6">
-  <%= form_tag(shelters_url, method: 'post') do %>
+  <%= form_tag shelters_url, method: 'post' do %>
 
     <h2>Shelter Details</h2>
-
-      <form role="form">
 
       <div class="form-group">
         <div>
@@ -60,22 +58,10 @@
         </div>
       </div>
 
-  </div>
-
-  <div class="col-md-6">
-    <h2>Login Details</h2>
-
       <div class="form-group">
         <div>
           <%= label_tag :email %><br />
-          <%= email_field_tag :email, nil, :class => "form-control"  %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div>
-          <%= label_tag :username %><br />
-          <%= text_field_tag :username, nil, :class => "form-control"  %>
+          <%= text_field_tag :email, nil, :class => "form-control"  %>
         </div>
       </div>
 

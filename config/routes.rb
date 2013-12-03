@@ -1,9 +1,26 @@
 OpenBedApp::Application.routes.draw do
 
+  # Routes for the Occupant resource:
+  # CREATE
+  get '/occupants/new', controller: 'occupants', action: 'new', :as => 'new_occupant'
+  post '/occupants', controller: 'occupants', action: 'create'
+
+  # READ
+  get '/occupants', controller: 'occupants', action: 'index'
+  get '/occupants/:id', controller: 'occupants', action: 'show', :as => 'occupant'
+
+  # UPDATE
+  get '/occupants/:id/edit', controller: 'occupants', action: 'edit', :as => 'edit_occupant'
+  patch '/occupants/:id', controller: 'occupants', action: 'update'
+
+  # DELETE
+  delete '/occupants/:id', controller: 'occupants', action: 'destroy'
+  #------------------------------
+
   #Routes for sessions
   get '/login', controller:'sessions', action: 'new', :as => 'new_session'
   post '/sessions', controller:'sessions', action: 'create'
-  delete '/logout', controller:'sessions', action: 'destroy'
+  get '/logout', controller:'sessions', action: 'destroy'
 
 
   #Routes for the Homepage

@@ -5,10 +5,10 @@ def new
 end
 
 def create
-  shelter_admin = ShelterAdmin.find_by_email(params[:email])
-  if shelter_admin.present? && shelter_admin.authenticate(params[:password])
-    session[:shelter_admin_id] = shelter_admin.id
-    redirect_to shelters_url
+  shelter = Shelter.find_by_email(params[:email])
+  if shelter.present? && shelter.authenticate(params[:password])
+    session[:shelter_id] = shelter.id
+    redirect_to shelter_url(shelter.id)
   else
     redirect_to new_session_url, notice: "Email/Password are incorrect. Please try again."
   end

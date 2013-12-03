@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h1>Occupants</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sex</th>
+        <th># of Beds Needed</th>
+        <th>Shelter Name</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @occupants.each do |occupant| %>
+      <tr>
+        <td><%= occupant.name %></td>
+        <td><%= occupant.sex %></td>
+        <td><%= occupant.number_of_beds %></td>
+        <td><%= Shelter.find_by(id: occupant.shelter_id).name %></td>
+
+        <td><%= link_to 'Edit', edit_occupant_url(occupant) %></td>
+        <td><%= link_to 'Destroy', occupant_url(occupant), method: 'delete', data: { confirm: "Do you really want to delete this occupant?" } %></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

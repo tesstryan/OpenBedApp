@@ -1,4 +1,6 @@
-<h1>Editing Shelter #<%= @shelter.id %></h1>
+<div class="container">
+
+<h1>Editing <%= @shelter.name %></h1>
 
 
 <%= form_tag(shelter_url(@shelter), method: 'patch') do %>
@@ -43,9 +45,12 @@
     <%= number_field_tag :open_beds, @shelter.open_beds %>
   </div>
 
-  
+    <br>
+
   <div>
-    <%= submit_tag "Update Shelter" %>
+    <%= submit_tag "Update Shelter", :class => "btn btn-primary" %>
   </div>
 
 <% end %>
+
+</div>

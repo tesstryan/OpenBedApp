@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="http://bootswatch.com/flatly/bootstrap.min.css">
 </head>
 <body>
+<span class="login_link"><%= link_to "Homepage", root_url %> | <%= link_to "Shelters Page", shelters_url %> | Already Registered? <%= link_to "Login Here", new_session_url%> | <%= link_to 'Log Out', logout_url %></span>
 
 <%= yield %>
 

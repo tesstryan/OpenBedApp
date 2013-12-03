@@ -5,3 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+a = Shelter.new
+a.name = "Lakeview Community Shelter"
+a.email = "lakeview@example.com"
+a.password = "password"
+a.password_confirmation = "password"
+a.save
+
+a = Shelter.new
+a.name = "North Shore Community Shelter"
+a.email = "northshore@example.com"
+a.password = "password"
+a.password_confirmation = "password"
+a.save
+
+a = Shelter.new
+a.name = "West Loop Shelter"
+a.email = "westloop@example.com"
+a.password = "password"
+a.password_confirmation = "password"
+a.save
+
+a = Shelter.new
+a.name = "Andersonville North Shelter"
+a.email = "andersonville@example.com"
+a.password = "password"
+a.password_confirmation = "password"
+a.save
