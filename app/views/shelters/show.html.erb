@@ -2,7 +2,7 @@
 
 <div class="container">
 
-<h1><%= @shelter.name %> Page</h1>
+<h2><%= @shelter.name %> Page</h2>
 
 
   <div class="row">
@@ -31,36 +31,38 @@
         <br>
 
 <!-- Register a bed - only shelter owners should see this -->
-  <h3>Register a Guest</h3>
 
-<%= form_tag(occupants_url, method: 'post') do %>
+    <h3>Register a Guest</h3>
 
-    <div>
-      <%= label_tag :name %><br />
-      <%= text_field_tag :name, nil, :class => "form-control"%>
-    </div>
+  <%= form_tag(occupants_url, method: 'post') do %>
 
-    <div>
-      <%= label_tag :sex %><br />
-      <%= text_field_tag :sex, nil, :class => "form-control" %>
-    </div>
+      <div>
+        <%= label_tag :name %><br />
+        <%= text_field_tag :name, nil, :class => "form-control"%>
+      </div>
 
-    <div>
-      <%= label_tag :number_of_beds, "Number of beds needed" %><br />
-      <%= number_field_tag :number_of_beds, nil, :class => "form-control" %>
-    </div>
+      <div>
+        <%= label_tag :sex %><br />
+        <%= text_field_tag :sex, nil, :class => "form-control" %>
+      </div>
 
-    <div>
-      <% label_tag :shelter_id, "Shelter Name" %><br />
-      <%= hidden_field_tag :shelter_id, @shelter.id %>
-    </div>
-        <br>
-    <div>
-      <%= submit_tag "Create Occupant", :class => "btn btn-primary" %>
-    </div>
+      <div>
+        <%= label_tag :number_of_beds, "Number of beds needed" %><br />
+        <%= number_field_tag :number_of_beds, nil, :class => "form-control" %>
+      </div>
+
+      <div>
+        <% label_tag :shelter_id, "Shelter Name" %><br />
+        <%= hidden_field_tag :shelter_id, @shelter.id %>
+      </div>
+          <br>
+      <div>
+        <%= submit_tag "Create Occupant", :class => "btn btn-primary" %>
+      </div>
 
 
-<% end %>
+
+  <% end %>
 
 </div>
 
@@ -108,41 +110,44 @@
       <%= link_to "Tonights Occupant List", occupants_url %>
       <br>
       <%= link_to 'Delete Shelter', shelter_url(@shelter.id), method: 'delete', data: { confirm: "Do you really want to delete this shelter? You will not be able to retrieve it." } %>
-
     </div>
 
   </div>
 </div>
 
+
 <div class="container">
 
-  <h1>Tonight's Occupants</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Sex</th>
-        <th># of Beds Needed</th>
-      </tr>
-    </thead>
-
-    <tbody>
-        <% if @occupants.present? %>
-          <% @occupants.each do |occupant| %>
+  <h2>Tonight's Occupants</h2>
+    <% if @occupants.present? %>
+    <table class="table">
+        <thead>
           <tr>
-            <td><%= occupant.name %></td>
-            <td><%= occupant.sex %></td>
-            <td><%= occupant.number_of_beds %></td>
-            <td><%= link_to 'Edit', edit_occupant_url(occupant) %></td>
-            <td><%= link_to 'Destroy', occupant_url(occupant), method: 'delete', data: { confirm: "Do you really want to delete this occupant?" } %></td>
-          <% end %>
+            <th>Name</th>
+            <th>Sex</th>
+            <th># of Beds Needed</th>
+            <th>Edit Occupant</th>
+            <th>Delete Occupant</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+              <% @occupants.each do |occupant| %>
+              <tr>
+                <td><%= occupant.name %></td>
+                <td><%= occupant.sex %></td>
+                <td><%= occupant.number_of_beds %></td>
+                <td><%= link_to 'Edit', edit_occupant_url(occupant) %></td>
+                <td><%= link_to 'Destroy', occupant_url(occupant), method: 'delete', data: { confirm: "Do you really want to delete this occupant? This will make their bed open again." } %></td>
+              </tr>
+              <% end %>
+        </tbody>
+      </table>
        <% else %>
-        <%= "No one here yet" %>
+        <%= "No occupants have been registered yet." %>
       <% end %>
-        </tr>
-    </tbody>
-  </table>
+
 
 </div>
 

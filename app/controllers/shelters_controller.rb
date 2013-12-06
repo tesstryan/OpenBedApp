@@ -23,12 +23,13 @@ class SheltersController < ApplicationController
     @shelter.total_beds = params[:total_beds]
     @shelter.open_beds = params[:total_beds]
     @shelter.password = params[:password]
-    @shelter.password_confirmation = params[:password_confirmations]
+    @shelter.password_confirmation = params[:password_confirmation]
     @shelter.email = params[:email]
 
     if @shelter.save
       redirect_to shelter_url(@shelter.id)
     else
+      flash.now[:error] = @shelter.errors.full_messages
       render 'new'
     end
   end

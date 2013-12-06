@@ -1,9 +1,12 @@
+
+
 <div class="container">
 
-  <h1 class="shelters_index_header">Overnight Shelters in Chicago</h1>
+  <h2 class="shelters_index_header">Overnight Shelters in Chicago</h2>
 
 
     <% @shelters.each do |shelter| %>
+
       <h3><%= link_to shelter.name, shelter_url(shelter) %></h3>
      Total Beds: <%= shelter.total_beds %> <br>
      Open Beds: <%= shelter.open_beds %> <br>
