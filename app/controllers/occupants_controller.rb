@@ -52,7 +52,7 @@ class OccupantsController < ApplicationController
            @shelter = Shelter.find_by_id(@occupant.shelter_id)
            @shelter.open_beds = @shelter.open_beds + @occupant.number_of_beds
            @shelter.save
-      redirect_to occupants_url
+      redirect_to shelter_url(@shelter)
     end
 
   end

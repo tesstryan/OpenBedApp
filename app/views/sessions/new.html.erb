@@ -1,29 +1,26 @@
-<div class="container">
+<div id="fancy_stuff" style="display:none" class="container">
 
 <% if notice.present? %>
-<div class="alert alert-warning"><%= notice %></div>
+<br>
+<div class="alert alert-danger"><%= notice %></div>
 <% end %>
 
 <h2>Shelter Sign in</h2>
 
 <%= form_tag sessions_url, method: 'post' do %>
 
-  <form role="form">
-    <div class="form-group">
+
       <%= label_tag :email %>
       <%= email_field_tag :email, nil, :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :username %>
-      <%= text_field_tag :username, nil, :class => "form-control"  %>
-    </div>
-      <div class="form-group">
+
+
       <%= label_tag :password %>
       <%= password_field_tag :password, nil, :class => "form-control"  %>
-    </div>
+
 
    <%= submit_tag "Login", :class => "btn btn-primary"  %>
-  </form>
 
 <% end %>
+
+
 </div>

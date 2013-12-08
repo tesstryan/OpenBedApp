@@ -1,34 +1,72 @@
-
-
 <div class="container">
+
+<div class="jumbotron">
+  <div class="container">
 
 <h2><%= @shelter.name %> Page</h2>
 
+    <div class="shelter_information">
 
-  <div class="row">
-    <div class="col-md-8">
-      <table>
-        <thead>
-          <tr>
-            <th class="shelter_column">Total beds</th>
-            <th class="shelter_column">Open beds</th>
-          </tr>
-        </thead>
-        <tbody>
-          <td><%= @shelter.total_beds %></td>
-          <td><%= @shelter.open_beds %> </td>
-        </tbody>
-      </table>
+      <p><b>Address:</b> <%= @shelter.street_address %>
 
-  <br>
 
-<!-- Progress Bar that would show the occupancy percentage at a time -->
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-          <span class="sr-only">Open Beds</span>
-        </div>
-      </div>
-        <br>
+<!-- END GENERAL SHELTER INFORMATION -->
+
+<% if session[:shelter_id].present? && session[:shelter_id] == @shelter.id %>
+
+<!-- EDITING SHELTER INFORMATION -->
+<br>
+      <%= link_to "Update Shelter Info", edit_shelter_url(@shelter.id) %>|
+      <%= link_to 'Delete Shelter', shelter_url(@shelter.id), method: 'delete', data: { confirm: "Do you really want to delete this shelter? You will not be able to retrieve it." } %> </p>
+    </div>
+<% end %>
+
+<div class="beds_open"><h3><%= @shelter.open_beds %> of <%= @shelter.total_beds %> beds are currently open at this shelter.</h3></div>
+
+
+ <!-- MAPPING Locations with gmaps4rails -->
+
+
+<div id="map" style="width: 100%; height: 300px;"></div>
+<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true"></script> -->
+<script type="text/javascript">
+
+  $(function() {
+    var location = <%= @shelter.return_latlong(@shelter.street_address).to_json.html_safe %>
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: new google.maps.LatLng(location[0], location[1]),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+
+
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(location[0], location[1]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(location[0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+  });
+
+  </script>
+  </div>
+</div>
+
+
+<!-- MAP END -->
+
+<% if session[:shelter_id].present? && session[:shelter_id] == @shelter.id %>
 
 <!-- Register a bed - only shelter owners should see this -->
 
@@ -67,50 +105,6 @@
 </div>
 
 
-<!-- Shelter information/details -->
-
-    <div class="col-md-4">
-      <p>
-        <b>Street address:</b>
-        <%= @shelter.street_address %>
-      </p>
-
-      <p>
-        <b>City:</b>
-        <%= @shelter.city %>
-      </p>
-
-      <p>
-        <b>State:</b>
-        <%= @shelter.state %>
-      </p>
-
-      <p>
-        <b>Zip:</b>
-        <%= @shelter.zip %>
-      </p>
-
-      <p>
-        <b>Phone number:</b>
-        <%= @shelter.phone_number %>
-      </p>
-
-      <p>
-        <b>Total beds:</b>
-        <%= @shelter.total_beds %>
-      </p>
-
-      <p>
-        <b>Open beds:</b>
-        <%= @shelter.open_beds %>
-      </p>
-
-      <%= link_to "Update Shelter Info", edit_shelter_url(@shelter.id) %>
-      <br>
-      <%= link_to "Tonights Occupant List", occupants_url %>
-      <br>
-      <%= link_to 'Delete Shelter', shelter_url(@shelter.id), method: 'delete', data: { confirm: "Do you really want to delete this shelter? You will not be able to retrieve it." } %>
-    </div>
 
   </div>
 </div>
@@ -118,7 +112,7 @@
 
 <div class="container">
 
-  <h2>Tonight's Occupants</h2>
+  <h2>Occupant's for <%= Date.today %></h2>
     <% if @occupants.present? %>
     <table class="table">
         <thead>
@@ -151,3 +145,6 @@
 
 </div>
 
+<% end %>
+
+</div>

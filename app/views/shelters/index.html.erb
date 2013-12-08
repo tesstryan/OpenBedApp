@@ -6,10 +6,10 @@
 
 
     <% @shelters.each do |shelter| %>
-
+    <div class="well">
       <h3><%= link_to shelter.name, shelter_url(shelter) %></h3>
-     Total Beds: <%= shelter.total_beds %> <br>
-     Open Beds: <%= shelter.open_beds %> <br>
+    <div class="beds_open"><h4><%= shelter.open_beds %> of <%= shelter.total_beds %> beds are currently open at this shelter.</h4></div>
+    </div>
     <% end %>
 
 
