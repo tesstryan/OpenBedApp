@@ -20,8 +20,8 @@
 
       <div class="form-group">
         <div>
-          <%= label_tag :street_address %><br />
-          <%= text_field_tag :street_address, nil, :placeholder => "Street Address", :class => "form-control"  %>
+          <%= label_tag :street_address, "Address" %><br />
+          <%= text_field_tag :street_address, nil, :placeholder => "Street Address, City, State, Zip Code", :class => "form-control"  %>
         </div>
       </div>
 
@@ -35,14 +35,14 @@
       <div class="form-group">
         <div>
           <%= label_tag :total_beds %><br />
-          <%= number_field_tag :total_beds, nil, :placeholder => "Total Number of Beds", :class => "form-control"  %>
+          <%= number_field_tag :total_beds, nil, min: 0, :placeholder => "Total Number of Beds", :class => "form-control"  %>
         </div>
       </div>
 
       <div class="form-group">
         <div>
           <%= label_tag :email %><br />
-          <%= text_field_tag :email, nil, :placeholder => "email@gmail.com", :class => "form-control"  %>
+          <%= text_field_tag :email, nil, :placeholder => "email@example.com", :class => "form-control"  %>
         </div>
       </div>
 
