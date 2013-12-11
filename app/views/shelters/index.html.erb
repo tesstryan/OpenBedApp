@@ -6,7 +6,7 @@
 
 
     <% @shelters.each do |shelter| %>
-    <div class="well">
+    <div class="well well-sm">
       <h3><%= link_to shelter.name, shelter_url(shelter) %></h3>
     <div class="beds_open"><h4><%= shelter.open_beds %> of <%= shelter.total_beds %> beds are currently open at this shelter.</h4></div>
     </div>

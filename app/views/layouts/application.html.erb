@@ -44,21 +44,21 @@
 <% end %>
 
 <h2>Shelter Sign in</h2>
-
+<div class="form-group">
 <%= form_tag sessions_url, method: 'post' do %>
 
       <%= label_tag :email %>
-      <%= email_field_tag :email, nil, :class => "form-control", :size => 10 %>
-
+      <%= email_field_tag :email, nil, :class => "form-control" %>
+      <br>
       <%= label_tag :password %>
-      <%= password_field_tag :password, nil, :class => "form-control", :size => 10  %>
+      <%= password_field_tag :password, nil, :class => "form-control"   %>
 
 
    <%= submit_tag "Login", :class => "btn btn-primary"  %>
 
 <% end %>
 
-
+</div>
 
 
 </div>
