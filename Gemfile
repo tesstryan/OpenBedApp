@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails_12factor', group: :production
-
 gem 'fancybox2-rails', '~>0.2.4'
 
 gem 'geokit'
