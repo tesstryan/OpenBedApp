@@ -8,22 +8,25 @@
     <div class="shelter_information">
 
         <p><b>Address:</b> <%= @shelter.street_address %> |
-        <b>Phone:</b> <%= @shelter.phone_number%></p>
-
-
+        <b>Phone:</b> <%= @shelter.phone_number%>
+        <% if @shelter.website.present? %> |  <%= link_to "Visit our Website", @shelter.website%><% end %></p>
 
 <!-- END GENERAL SHELTER INFORMATION -->
 
 <% if session[:shelter_id].present? && session[:shelter_id] == @shelter.id %>
 
 <!-- EDITING SHELTER INFORMATION -->
-<br>
-      <%= link_to "Update Shelter Info", edit_shelter_url(@shelter.id) %>|
+
+      <p><%= link_to "Update Shelter Info", edit_shelter_url(@shelter.id) %>|
       <%= link_to 'Delete Shelter', shelter_url(@shelter.id), method: 'delete', data: { confirm: "Do you really want to delete this shelter? You will not be able to retrieve it." } %> </p>
     </div>
 <% end %>
-
-<div class="beds_open"><h3><%= @shelter.open_beds %> of <%= @shelter.total_beds %> beds are currently open at this shelter.</h3></div>
+      <% if @shelter.open_beds == 0 %>
+      <div class="beds_full"><h4>This shelter is currently full. Please see other shelters for open beds.<h4></div>
+      <% else %>
+    <h4 class="beds_open_2"><%= @shelter.open_beds %> of <%= @shelter.total_beds %> beds are currently open at this shelter.</h4>
+    <% end %>
+    </div>
 
 
  <!-- MAPPING Locations with gmaps4rails -->
@@ -63,7 +66,7 @@
 
   </script>
   </div>
-</div>
+
 
 
 <!-- MAP END -->
@@ -88,7 +91,7 @@
 
       <div>
         <%= label_tag :number_of_beds, "Number of beds needed" %><br />
-        <%= number_field_tag :number_of_beds, nil, :class => "form-control" %>
+        <%= number_field_tag :number_of_beds, nil, min:0, :class => "form-control" %>
       </div>
 
       <div>
@@ -114,7 +117,7 @@
 
 <div class="container">
 
-  <h2>Occupant's for <%= Date.today %></h2>
+  <h2>Occupant's for <%= Time.now.strftime("%b %d, %Y") %></h2>
     <% if @occupants.present? %>
     <table class="table">
         <thead>
@@ -122,7 +125,7 @@
             <th>Name</th>
             <th>Sex</th>
             <th># of Beds Needed</th>
-            <th>Edit Occupant</th>
+            <!-- <th>Edit Occupant</th> -->
             <th>Delete Occupant</th>
           </tr>
         </thead>
@@ -134,19 +137,21 @@
                 <td><%= occupant.name %></td>
                 <td><%= occupant.sex %></td>
                 <td><%= occupant.number_of_beds %></td>
-                <td><%= link_to 'Edit', edit_occupant_url(occupant) %></td>
-                <td><%= link_to 'Destroy', occupant_url(occupant), method: 'delete', data: { confirm: "Do you really want to delete this occupant? This will make their bed open again." } %></td>
+                <!-- <td>< link_to 'Edit', edit_occupant_url(occupant) %></td> -->
+                <td><%= link_to 'Occupant Left', occupant_url(occupant), method: 'delete', data: { confirm: "Do you really want to delete this occupant? This will make their bed open again." } %></td>
               </tr>
               <% end %>
         </tbody>
       </table>
        <% else %>
         <%= "No occupants have been registered yet." %>
+        <br>
       <% end %>
 
 
-</div>
 
 <% end %>
 
 </div>
+</div>
+<br>

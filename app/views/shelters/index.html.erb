@@ -1,16 +1,21 @@
-
-
 <div class="container">
+<br>
 
   <h2 class="shelters_index_header">Overnight Shelters in Chicago</h2>
 
-
-    <% @shelters.each do |shelter| %>
+    <% @shelters.order(:name).each do |shelter| %>
     <div class="well well-sm">
       <h3><%= link_to shelter.name, shelter_url(shelter) %></h3>
-    <div class="beds_open"><h4><%= shelter.open_beds %> of <%= shelter.total_beds %> beds are currently open at this shelter.</h4></div>
+      <% if shelter.open_beds == 0 %>
+     <div class="beds_full"><h3>This shelter is full.<h3></div>
+      <% else %>
+      <h4 class="beds_open_1"><%= shelter.open_beds %> of <%= shelter.total_beds %> beds are currently open at this shelter.</h4>
+    <% end %>
     </div>
     <% end %>
 
 
 </div>
+
+
+

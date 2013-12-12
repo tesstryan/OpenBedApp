@@ -32,6 +32,7 @@ class OccupantsController < ApplicationController
     @occupant = Occupant.find_by(:id => params[:id])
   end
 
+# NEED TO FIX UPDATING BED NUMBERS
   def update
     @occupant = Occupant.find_by(:id => params[:id])
     @occupant.name = params[:name]
@@ -40,7 +41,10 @@ class OccupantsController < ApplicationController
     @occupant.shelter_id = params[:shelter_id]
 
     if @occupant.save
-      redirect_to occupants_url
+      @shelter = Shelter.find_by_id(params[:shelter_id])
+      @shelter.open_beds = @shelter.open_beds - @occupant.number_of_beds
+      @shelter.save
+      redirect_to shelter_url(@shelter.id)
     else
       render 'new'
     end

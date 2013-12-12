@@ -1,6 +1,8 @@
-<div="container">
+<br><br>
 
-<center><h1>Editing Occupant #<%= @occupant.id %></h1></center>
+<div class="container">
+
+<h1>Edit Occupant</h1>
 
 
 <%= form_tag(occupant_url(@occupant), method: 'patch') do %>
@@ -17,17 +19,17 @@
 
   <div>
     <%= label_tag :number_of_beds %><br />
-    <%= number_field_tag :number_of_beds, @occupant.number_of_beds %>
+    <%= number_field_tag :number_of_beds, @occupant.number_of_beds, min: 0 %>
   </div>
 
   <div>
-    <%= label_tag :shelter_id %><br />
-    <%= number_field_tag :shelter_id, @occupant.shelter_id %>
+    <%= hidden_field_tag :shelter_id %><br />
+    <%= hidden_field_tag :shelter_id, @occupant.shelter_id %>
   </div>
 
 
   <div>
-    <%= submit_tag "Update Occupant" %>
+    <%= submit_tag "Update Occupant", :class => "btn btn-primary" %>
   </div>
 
 <% end %>

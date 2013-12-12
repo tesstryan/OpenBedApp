@@ -13,9 +13,29 @@
  *= require_tree .
  */
 
-body {
-  font-family: 'Oxygen', sans-serif;
+ body, html {
+  height: 100%;
+ }
+
+.homepage {
+  background: url('IL2.png') 50% 50%;
+
+
+
+  background-repeat: no-repeat;
+
 }
+
+.home {
+  color:white;
+
+}
+
+.container {
+  margin-top: 20px;
+}
+
+/*MAP STYLE*/
 
 #map img {
   max-width: none;
@@ -24,9 +44,6 @@ body {
   width: auto; display:inline;
 }
 
-.homepage .homepage_text {
-  background-image: url("images/IL2.png");
-}
 /*Nav*/
 
 /* 2.1 Navigation */
@@ -36,14 +53,12 @@ body {
   height: 60px;
   font-size: 14px;
   text-align: center;
+  background-color: white;
   position: absolute;
   margin: 0 auto;
   padding-top: 10px;
 }
 
-#nav-sticky-wrapper.is-sticky #nav {
-  background-color: #000d54;
-}
 
 #nav ul {
   margin: 0 auto;
@@ -69,7 +84,7 @@ body {
   text-decoration: none;
 }
 
-#nav ul li a:hover, #nav ul li.current a { color: #000d54;
+#nav ul li a:hover, #nav ul li.current a { color: #000000;
 }
 
 /*Homepage Styling*/
@@ -79,7 +94,7 @@ body {
 }
 
 .homepage {
-  padding-top: 150px;
+  padding-top: 135px;
   text-align: center
   }
 
@@ -127,13 +142,25 @@ h2 {
   text-align: center;
 }
 
-.beds_open h3 {
+.beds_open h4 {
+text-align: center;
+}
 
+.beds_full h4 {
+text-align: center;
+}
+
+.beds_open_2 {
+  color: orange;
   text-align: center;
 }
 
-.beds_open {
-  color: orange;
+.beds_full {
+  color: red;
+}
 
+.beds_open_1 {
+  color: orange;
+  text-align: left;
 }
 
