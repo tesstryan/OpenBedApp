@@ -17,10 +17,10 @@
   height: 100%;
  }
 
-.homepage {
-  background: url('IL2.png') 50% 50%;
+.background {
+  background: url('IL2.png') 50% 50% ;
   background-repeat: no-repeat;
-
+  height: 530px;
 }
 
 .home {
@@ -91,7 +91,7 @@
 }
 
 .homepage {
-  padding-top: 135px;
+
   text-align: center
   }
 
@@ -104,6 +104,10 @@
 .homepage a:hover {
   color:#083584;
   text-decoration: none}
+
+  .background h1 {
+    padding-top: 120px;
+  }
 
 .homepage_text p {
   font-size: 16px;
